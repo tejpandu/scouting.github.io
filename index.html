@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>422 Scouting</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <!-- import nodemailer -->
+    <script src="https://smtpjs.com/v3/smtp.js">nodemailer</script>
+    <script type="text/javascript" src="node.js"></script>
+
+</head>
+<body>
+    <div>
+        <h1>422 Crescendo Scouting Data</h1>
+        <div class="name-div">
+            <h2>Prematch</h2>
+            <form>
+                <div class="name-div">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="match-number-div">
+                    <label for="match-number">Match Number:</label>
+                    <div>
+                        <input type="number" id="match-number" name="match-number" required>
+                    </div>
+                </div>
+                <div class="robot-position-div">
+                    <label for="robot-position">Robot Position:</label>
+                    <select id="robot-position" name="robot-position" required>
+                        <option value="red-close">Red Close</option>
+                        <option value="red-mid">Red Mid</option>
+                        <option value="red-far">Red Far</option>
+                        <option value="blue-close">Blue Close</option>
+                        <option value="blue-mid">Blue Mid</option>
+                        <option value="blue-far">Blue Far</option>
+                    </select>
+                </div>
+                <div class="team-number-div">
+                    <label for="team-number">Team Number:</label>
+                    <div>
+                        <input type="number" id="team-number" name="team-number" >
+                    </div>
+                </div>
+                <div class="starting-position-div">
+                    <label for="starting-position">Starting Position:</label>
+                    <select id="starting-position" name="starting-position" required>
+                        <option value="Amp Side">Amp Side</option>
+                        <option value="Center">Center</option>
+                        <option value="Source Side">Source Side</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+        <div class="mobility-div">
+            <h2>Auto</h2>
+            <div>
+                <label for="Mobility">Mobility:</label>
+                <input type="checkbox" id="mobility" name="Mobility" value=false>
+
+            </div>
+            <div class="auto-amp-div">
+                <label for="Auto-Amp">Auto Amp:</label>
+                <div>
+                    <input type="number" id="auto-amp" name="Auto-Amp" value="0">
+                    <br>
+                    <br>
+                    <button onclick="increaseValue('auto-amp')">+</button>
+                    <button onclick="decreaseValue('auto-amp')">-</button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <div class="auto-speaker-div">
+                <label for="Auto-Speaker">Auto Speaker:</label>
+                <div>
+                    <input type="number" id="auto-speaker" name="Auto-Speaker" value="0" required>
+                    <br>
+                    <br>
+                    <button onclick="increaseValue('auto-speaker')">+</button>
+                    <button onclick="decreaseValue('auto-speaker')">-</button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <div class="auto-missed-div">
+                <label for="Auto-Missed">Auto Missed:</label>
+                <div>
+                    <input type="number" id="auto-missed" name="Auto-Missed" value="0" required>
+                    <br>
+                    <br>
+                    <button onclick="increaseValue('auto-missed')">+</button>
+                    <button onclick="decreaseValue('auto-missed')">-</button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <div class="teleop-div">
+            <h2>Teleop</h2>
+            <div class="teleop-amp-div">
+                <label for="Teleop-Amp">Teleop Amp:</label>
+                <div>
+                    <input type="number" id="teleop-amp" name="Teleop-Amp" value="0" required>
+                    <br>
+                    <br>
+                    <button onclick="increaseValue('teleop-amp')">+</button>
+                    <button onclick="decreaseValue('teleop-amp')">-</button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <div class="teleop-speaker-div">
+                <label for="Teleop-Speaker">Teleop Speaker:</label>
+                <div>
+                    <input type="number" id="teleop-speaker" name="Teleop-Speaker" value="0" required>
+                    <br>
+                    <br>
+                    <button onclick="increaseValue('teleop-speaker')">+</button>
+                    <button onclick="decreaseValue('teleop-speaker')">-</button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <div class="far-intake-div">
+                <label for="Far-Intake">Far Intake:</label>
+                <div>
+                    <input type="number" id="teleop-far-intake" name="Far-Intake" value="0" required>
+                    <br>
+                    <br>
+                    <button onclick="increaseValue('teleop-far-intake')">+</button>
+                    <button onclick="decreaseValue('teleop-far-intake')">-</button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <div class="teleop-missed-div">
+                <label for="Teleop-Missed">Teleop Missed:</label>
+                <div>
+                    <input type="number" id="teleop-missed" name="Teleop-Missed" value="0" required>
+                    <br>
+                    <br>
+                    <button onclick="increaseValue('teleop-missed')">+</button>
+                    <button onclick="decreaseValue('teleop-missed')">-</button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <div class="endgame-div">
+            <h2>Endgame</h2>
+            <div class="parked-div">
+                <label for="Parked">Parked:</label>
+                <input type="checkbox" id="parked" name="Parked" value=false>
+            </div>
+            <div class="onstage-div">
+                <label for="Onstage">Onstage:</label>
+                <input type="checkbox" id="onstage" name="Onstage" value=false>
+            </div>
+            <div class="harmony-div">
+                <label for="Harmony">Harmony:</label>
+                <input type="checkbox" id="harmony" name="Harmony" value=false>
+            </div>
+            <div class="trap-div">
+                <label for="Trap">Trap:</label>
+                <input type="checkbox" id="trap" name="Trap" value=false>
+            </div>
+        </div>
+        <div class="misc-div">
+            <h2>Misc</h2>
+            <div class="comments-div">
+                <label for="Comments">Comments:</label>
+                <br>
+                <textarea id="comments" name="Comments" rows="4" cols="50" maxlength="49"></textarea>
+            </div>
+        </div>
+        <div class="buttons-div">
+            <br>
+            <button onclick="returnElement('match-number')" class="submit" type="submit">Submit</button>
+
+        <br>
+        <br>
+        <!-- add the code for a button for reset data similar to submit but red -->
+
+            <button onclick="resetData()" type="reset" class="reset">Reset</button>
+            <br>
+            <br>
+        </div>
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
+
+</body>
+</html>
